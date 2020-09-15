@@ -8,7 +8,7 @@
 <body>
     
     <script>
-        var choices = ["Rock", "Paper", "Scissors"];
+        var choices = ["rock", "paper", "scissors"];
         var tieCount = 0;
         var winCount = 0;
         var lossCount = 0;
@@ -16,31 +16,49 @@
         for (var i = 0; i < 10; i++){
 
             var playerChoice = prompt("Round " + (i+1) + " of 10: Enter Rock, Paper, or Scissors");
-            var ranNum = Math.floor(Math.random() * 3);
+            var playerChoiceLower = playerChoice.toLowerCase();
+            console.log(playerChoiceLower);
 
-            var computerChoice = choices[ranNum];
+            if (playerChoiceLower === "rock" || playerChoiceLower === "paper" || playerChoiceLower === "scissors") {
 
-            if (playerChoice === computerChoice){
-                tieCount = tieCount + 1;
-                alert("Your Choice: " + playerChoice + "\n" +
-                        "Computer Choice: " + computerChoice + "\n" +
-                            "You have " + tieCount + " ties");
+                var ranNum = Math.floor(Math.random() * 3);
+
+                var computerChoice = choices[ranNum];
+
+                if (playerChoiceLower === computerChoice){
+                    
+                    tieCount = tieCount + 1;
+                    alert("Your Choice: " + playerChoiceLower + "\n" +
+                          "Computer Choice: " + computerChoice + "\n" +
+                          "You have " + tieCount + " ties"
+                    );
+
+                } else if ((playerChoiceLower === "rock" && computerChoice === "scissors") || 
+                           (playerChoiceLower === "paper" && computerChoice === "rock") || 
+                           (playerChoiceLower === "scissors" && computerChoice === "paper")){
+
+                                winCount = winCount + 1;
+                                alert("Your Choice: " + playerChoiceLower + "\n" +
+                                    "Computer Choice: " + computerChoice + "\n" +
+                                    "You have " + winCount + " wins"
+
+                                );
+
+                } else if ((playerChoiceLower === "scissors" && computerChoice === "rock") || 
+                           (playerChoiceLower === "rock" && computerChoice === "paper") || 
+                           (playerChoiceLower === "paper" && computerChoice === "scissors")){
+
+                                lossCount = lossCount + 1;
+                                alert("Your Choice: " + playerChoiceLower + "\n" +
+                                    "Computer Choice: " + computerChoice + "\n" +
+                                    "You have " + lossCount + " losses"
+                                );
+                }
+
+            } else {
+                alert("Try again. Please Enter Rock, Paper, or Scissors");
+                i = i - 1;
             }
-
-            if (playerChoice === "Rock" && computerChoice === "Scissors" || playerChoice === "Paper" && computerChoice === "Rock" || playerChoice === "Scissors" && computerChoice === "Paper"){
-                winCount = winCount + 1;
-                alert("Your Choice: " + playerChoice + "\n" +
-                        "Computer Choice: " + computerChoice + "\n" +
-                            "You have " + winCount + " wins");
-            }
-
-            if (playerChoice === "Scissors" && computerChoice === "Rock" || playerChoice === "Rock" && computerChoice === "Paper" || playerChoice === "Paper" && computerChoice === "Scissors"){
-                lossCount = lossCount + 1;
-                alert("Your Choice: " + playerChoice + "\n" +
-                        "Computer Choice: " + computerChoice + "\n" +
-                            "You have " + lossCount + " losses");
-            }
-
 
         }
 
