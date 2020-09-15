@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    
+    <script>
+        var choices = ["Rock", "Paper", "Scissors"];
+        var tieCount = 0;
+        var winCount = 0;
+        var lossCount = 0;
+
+        for (var i = 0; i < 10; i++){
+
+            var playerChoice = prompt("Round " + (i+1) + " of 10: Enter Rock, Paper, or Scissors");
+            var ranNum = Math.floor(Math.random() * 3);
+
+            var computerChoice = choices[ranNum];
+
+            if (playerChoice === computerChoice){
+                tieCount = tieCount + 1;
+                alert("Your Choice: " + playerChoice + "\n" +
+                        "Computer Choice: " + computerChoice + "\n" +
+                            "You have " + tieCount + " ties");
+            }
+
+            if (playerChoice === "Rock" && computerChoice === "Scissors" || playerChoice === "Paper" && computerChoice === "Rock" || playerChoice === "Scissors" && computerChoice === "Paper"){
+                winCount = winCount + 1;
+                alert("Your Choice: " + playerChoice + "\n" +
+                        "Computer Choice: " + computerChoice + "\n" +
+                            "You have " + winCount + " wins");
+            }
+
+            if (playerChoice === "Scissors" && computerChoice === "Rock" || playerChoice === "Rock" && computerChoice === "Paper" || playerChoice === "Paper" && computerChoice === "Scissors"){
+                lossCount = lossCount + 1;
+                alert("Your Choice: " + playerChoice + "\n" +
+                        "Computer Choice: " + computerChoice + "\n" +
+                            "You have " + lossCount + " losses");
+            }
+
+
+        }
+
+        alert("Wins: " + winCount + "\n" +
+                "Losses: " + lossCount + "\n" +
+                    "Ties: " + tieCount);
+
+        console.log("Wins: " + winCount);
+        console.log("Losses: " + lossCount);
+        console.log("Ties: " + tieCount);
+
+    </script>
+
+</body>
+</html>
